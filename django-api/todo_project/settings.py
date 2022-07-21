@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',  # 追加
+    'rest_framework',               # これから使います
+    'rest_framework.authtoken',     # これから使います
+    'core',
+    'user',                         # 追加
 ]
 
 MIDDLEWARE = [
