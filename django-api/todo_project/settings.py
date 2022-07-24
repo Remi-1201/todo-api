@@ -1,20 +1,12 @@
+# 3.4 アプリの追加登録と、カスタム User モデル利用の宣言
 import os
 from .settings_local import *
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',               # これから使います
     'rest_framework.authtoken',     # これから使います
-    'core',
+    'core',                         # 3.4.1 アプリの追加登録
     'user',                         # 追加
     # 8.2.2 Todo app の作成 / app 作成後は settings.py への登録
     'todo',
@@ -60,8 +52,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'todo_project.wsgi.application'
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -78,10 +69,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -92,10 +79,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'core.User'    # ファイル最下部に記述
+AUTH_USER_MODEL = 'core.User'    # 3.4.2 カスタム User モデル利用の宣言
