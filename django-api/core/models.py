@@ -1,7 +1,9 @@
+# 3.3 User モデルの作成
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.conf import settings    # あとで使います。
 
+# 3.3.1 BaseUserManager=マネージャーをカスタマイズする際に継承
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
@@ -25,7 +27,9 @@ class UserManager(BaseUserManager):
 
         return user
 
-
+# 3.3.1 AbstractBaseUser -> 動作を柔軟に定義したい際に利用
+# - パーミッションの機能を利用したい場合は、
+# - PermissionMixin を同時に継承しておく
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports using email instead of username"""
     email = models.EmailField(max_length=255, unique=True)
@@ -35,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'    # デフォルトは名前入力、今回はメールアドレスにカスタム
+    USERNAME_FIELD = 'email'    # 3.3 デフォルトは名前入力、今回はメールアドレスにカスタム
 
 # 8.1.1 Todo モデルの作成 / 最下部に追加
 class Todo(models.Model):
