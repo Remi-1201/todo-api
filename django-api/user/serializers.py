@@ -41,9 +41,15 @@ class UserSerializer(serializers.ModelSerializer):
 
         return user
 
-# トークンの発行を実装
+# 4. トークン認証 
+"""
+作成したユーザーがパスワードを変更したいとなった時、
+認証されたユーザー（本人）だけが変更できるように制御
+"""
 class AuthTokenSerializer(serializers.Serializer):
-    """必要なユーザー情報の項目（メールアドレスとパスワード）を設定"""
+    """
+    4.1.1 必要なユーザー情報の項目（メールアドレスとパスワード）を設定
+    """
     email = serializers.CharField()
     password = serializers.CharField(
         style={'input_type': 'password'},
@@ -51,7 +57,7 @@ class AuthTokenSerializer(serializers.Serializer):
     )
 
     def validate(self, attrs):
-        """検証を行います"""
+        """4.1.2 必要なユーザー情報の項目をvalidate 関数で検証"""
         email = attrs.get('email')
         password = attrs.get('password')
 

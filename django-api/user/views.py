@@ -22,11 +22,11 @@ class CreateUserView(generics.CreateAPIView):
     # 3.10.2 serializer_class に作った UserSerializer を指定しています。
     serializer_class = UserSerializer
 
-# トークンの発行を実装
+# 4.2.1 トークンの発行を実装
 class CreateTokenView(ObtainAuthToken):
-    """Create a new auth token for user, restrict who can see Todo"""
+    """4.2.3 Create a new auth token for user, restrict who can see Todo"""
     serializer_class = AuthTokenSerializer
-    """renderer_classes = ブラウザ上で発行されたトークンを確認することができます"""
+    """4.2.3 renderer_classes = ブラウザ上で発行されたトークンを確認することができます"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 # ユーザー情報の更新
