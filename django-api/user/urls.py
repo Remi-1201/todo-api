@@ -11,6 +11,6 @@ urlpatterns = [
     path('create/', views.CreateUserView.as_view(), name='create'),
     # 4.3  追加/ トークンの発行 
     path('token/', views.CreateTokenView.as_view(), name='token'), 
-    # ユーザー情報の更新
+    # 5.4 ユーザー情報の更新
     path('update/', views.ManageUserView.as_view(), name='update'), 
 ]

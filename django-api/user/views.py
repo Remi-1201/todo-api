@@ -8,12 +8,12 @@ from rest_framework import generics
 
 from user.serializers import UserSerializer
 
-# トークンの発行を実装
+# 4.4 追加・トークンの発行を実装
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 from user.serializers import UserSerializer, AuthTokenSerializer 
 
-# ユーザー情報の更新
+# 5.2 ユーザー情報の更新
 from rest_framework import generics, authentication, permissions  
 
 
@@ -29,15 +29,15 @@ class CreateTokenView(ObtainAuthToken):
     """4.2.3 renderer_classes = ブラウザ上で発行されたトークンを確認することができます"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
-# ユーザー情報の更新
+# 5.3 ユーザー情報の更新
 class ManageUserView(generics.RetrieveUpdateAPIView):
     """Manage the authenticated user"""
     serializer_class = UserSerializer
-    # authentication, permissions = 認証と許可
-    # トークン認証を利用し、認証されたユーザーのみ閲覧・編集を許可する    
+    # 5.3.1 authentication, permissions = 認証と許可
+    # 5.3.2 トークン認証を利用し、認証されたユーザーのみ閲覧・編集を許可する    
     authentication_classes = (authentication.TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
-    # 認証されていないユーザーは閲覧のみ許可、といった制限もできます
+    # 5.3.3 認証されていないユーザーは閲覧のみ許可、といった制限もできます
 
     def get_object(self):
         """Retrieve and return authentication user"""

@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 
 from rest_framework import serializers
 
-from django.contrib.auth import get_user_model, authenticate  # トークンの発行を実装
+from django.contrib.auth import get_user_model, authenticate  # 4.1 トークンの発行を実装
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -28,10 +28,10 @@ class UserSerializer(serializers.ModelSerializer):
 
         return user
 
-    
+    # 5.1 認証されたユーザーが自身の登録情報を更新できるようにします
     def update(self, instance, validated_data):
         """Update a user, setting the password correctly and return it"""
-        # .pop('password') = 更新前のパスワードを削除
+        # 5.1.1 .pop('password') = 更新前のパスワードを削除
         password = validated_data.pop('password', None)
         user = super().update(instance, validated_data)
 
