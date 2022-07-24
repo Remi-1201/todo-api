@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',     # 3.8.3 これから使います
     'core',                         # 3.4.1 アプリの追加登録
     'user',                         # 3.8.4 追加
-    # 8.2.2 Todo app の作成 / app 作成後は settings.py への登録
+    # 6.5 Todo app の作成 / app 作成後は settings.py への登録
     'todo',
 ]
 

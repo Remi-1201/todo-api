@@ -1,4 +1,4 @@
-# 8.2.3 Todo app の作成 / Serializer の作成
+# 6.6 Todo app の作成 / Serializer の作成
 from rest_framework import serializers
 
 from core.models import Todo
@@ -8,7 +8,7 @@ class TodoSerializer(serializers.ModelSerializer):
     """Serializer for Todo objects"""
 
     user = UserSerializer(read_only=True)
-    """Todo モデルと紐づいている User モデルの user フィールドに関しては 
+    """6.6.1 Todo モデルと紐づいている User モデルの user フィールドに関しては 
     UserSerializer でシリアライズします。"""
 
     class Meta:

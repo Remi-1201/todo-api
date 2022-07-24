@@ -30,5 +30,5 @@ class UserAdmin(BaseUserAdmin):
     )
 
 admin.site.register(models.User, UserAdmin)
-# 8.1.2 Todo モデルの作成 / 最下部に追加
+# 6.2 Todo モデルの作成 / 最下部に追加
 admin.site.register(models.Todo) 

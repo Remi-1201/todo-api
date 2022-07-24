@@ -41,11 +41,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'    # 3.3 デフォルトは名前入力、今回はメールアドレスにカスタム
 
-# 8.1.1 Todo モデルの作成 / 最下部に追加
+# 6.1 Todo モデルの作成 / 最下部に追加
 class Todo(models.Model):
     """Todo object"""
     user = models.ForeignKey(
-        # Userモデルをカスタマイズしたので、Userモデルを参照するよう指定
+        # 6.1.1 settings.AUTH_USER_MODEL= Userモデルをカスタマイズしたので、
+        # - Userモデルを参照するよう指定 ↓
         settings.AUTH_USER_MODEL,
         on_delete = models.CASCADE
     )
