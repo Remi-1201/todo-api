@@ -1,13 +1,15 @@
+# 1.3 docker-compose.yml の作成
+# docker-compose.yml = アプリケーションを動かすための処理を記述しているファイル
 version: "3"
 
-services:
-  app:
-    build:
-      context: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./django-api:/django-api
-    command: >
-      sh -c "python manage.py migrate &&
+services:             # この下にコンテナを定義
+  app:                # コンテナの名前を指定
+    build:            # Dockerfile が置いてあるディレクトリのパスを記述
+      context: .      
+    ports:            # ポートマッピングを指定。
+      - "8000:8000"   # "ホスト側：コンテナ側"
+    volumes:                        # ディレクトリマウント      
+      - ./django-api:/django-api    # ホスト側からファイルを配置したり編集したりできるようマウント
+    command: >                              # コンテナ起動時に実行されるコマンド      
+      sh -c "python manage.py migrate &&                
             python manage.py runserver 0.0.0.0:8000"
