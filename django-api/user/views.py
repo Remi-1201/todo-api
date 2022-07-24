@@ -1,5 +1,5 @@
 """
-View はクライアント（ブラウザなど）からのリクエストに応じ、
+3.10.1 View はクライアント（ブラウザなど）からのリクエストに応じ、
 どういった処理をするか（どの API を提供するか）を司っています。
 """
 from django.shortcuts import render
@@ -19,7 +19,7 @@ from rest_framework import generics, authentication, permissions
 
 class CreateUserView(generics.CreateAPIView):
     """Create a new user in the system"""
-    # serializer_class に作った UserSerializer を指定しています。
+    # 3.10.2 serializer_class に作った UserSerializer を指定しています。
     serializer_class = UserSerializer
 
 # トークンの発行を実装
