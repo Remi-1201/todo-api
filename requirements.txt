@@ -1,2 +1,5 @@
+# 1.2 requirements.txt の作成
+
+# 必要なパッケージとパージョンをに記述し、一括でインストール
 Django>=3.0.7,<3.1.0
 djangorestframework>=3.11.0,<3.12.0
