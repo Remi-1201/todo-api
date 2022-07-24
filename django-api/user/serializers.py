@@ -1,6 +1,6 @@
 
 """
-serializers = クエリセットやモデルのインスタンスのような
+3.9.1 serializers = クエリセットやモデルのインスタンスのような
 複雑なデータをJSON、XMLなどの出力可能なデータに書き出すこと。
 """
 from django.contrib.auth import get_user_model
@@ -12,12 +12,12 @@ from django.contrib.auth import get_user_model, authenticate  # トークンの�
 
 class UserSerializer(serializers.ModelSerializer):
     """
-    ModelSerializer = Django のモデルと紐づいています。
+    3.9.2 ModelSerializer = Django のモデルと紐づいています。
     モデルに基づいてフィールドとバリデータが自動的に Serializer にも適用されます
     """
 
     class Meta:
-        # get_user_model 関数は、そのプロジェクトで使用している User モデルを取得します。 
+        # 3.9.3 get_user_model 関数は、そのプロジェクトで使用している User モデルを取得します。 
         model = get_user_model()
         fields = ('email', 'password', 'name')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 8}}
