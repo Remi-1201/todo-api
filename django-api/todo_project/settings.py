@@ -1,4 +1,5 @@
 # 3.4 アプリの追加登録と、カスタム User モデル利用の宣言
+# 3.8.2 User モデル対応 app の作成
 import os
 from .settings_local import *
 
@@ -15,10 +16,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',               # これから使います
-    'rest_framework.authtoken',     # これから使います
+    'rest_framework',               # 3.8.2 これから使います
+    'rest_framework.authtoken',     # 3.8.3 これから使います
     'core',                         # 3.4.1 アプリの追加登録
-    'user',                         # 追加
+    'user',                         # 3.8.4 追加
     # 8.2.2 Todo app の作成 / app 作成後は settings.py への登録
     'todo',
 ]
