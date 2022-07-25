@@ -13,3 +13,6 @@ services:             # この下にコンテナを定義
     command: >                              # コンテナ起動時に実行されるコマンド      
       sh -c "python manage.py migrate &&                
             python manage.py runserver 0.0.0.0:8000"
+    # Heroku
+    web:
+      platform: linux/amd64 

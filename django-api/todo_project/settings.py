@@ -3,6 +3,10 @@
 import os
 # from .settings_local import *
 
+# Heroku
+import django_heroku
+from urllib.parse import urlparse
+
 try:
     from .settings_local import *
 except ImportError:
@@ -30,14 +34,14 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Heroku
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', #Heroku
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', 
 ]
 
 ROOT_URLCONF = 'todo_project.urls'
@@ -88,9 +92,14 @@ USE_TZ = False # 7.2 初期設定
 
 STATIC_URL = '/static/'
 
+# Heroku
+# static setting
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 AUTH_USER_MODEL = 'core.User'    # 3.4.2 カスタム User モデル利用の宣言
 
 # Heroku
-if not DEBUG:
-    import django_heroku
+if not DEBUG: 
     django_heroku.settings(locals())

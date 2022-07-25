@@ -29,3 +29,7 @@ RUN adduser -D user
 
 # ユーザをrootから変更
 USER user                                    
+
+# Heroku
+RUN python3 manage.py collectstatic --noinput
+CMD gunicorn --bind 0.0.0.0:$PORT app.wsgi
