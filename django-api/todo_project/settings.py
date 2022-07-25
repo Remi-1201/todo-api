@@ -3,7 +3,6 @@
 import os
 # from .settings_local import *
 
-# Heroku
 try:
     from .settings_local import *
 except ImportError:
@@ -12,11 +11,6 @@ except ImportError:
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False # Heroku - changed from True to False
-
-# Heroku
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
 
 ALLOWED_HOSTS = []
 
@@ -43,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #Heroku
 ]
 
 ROOT_URLCONF = 'todo_project.urls'
@@ -94,3 +89,8 @@ USE_TZ = False # 7.2 初期設定
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'core.User'    # 3.4.2 カスタム User モデル利用の宣言
+
+# Heroku
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
