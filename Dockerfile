@@ -10,10 +10,10 @@ LABEL architecture="Your Name"
 ENV PYTHONUNBUFFERD 1                        
 
 # ローカルのrequirements.txtをコンテナにコピー
-COPY ./requirements.txt /requirements.txt    
+# COPY ./requirements.txt /requirements.txt    
 
 # requirements.txtに従ってパッケージを一括でインストール
-RUN pip install -r /requirements.txt         
+# RUN pip install -r /requirements.txt         
 
 # Djangoプロジェクトを置くディレクトリをコンテナ上に作成
 RUN mkdir /django-api                        
