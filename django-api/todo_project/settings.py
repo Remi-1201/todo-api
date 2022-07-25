@@ -1,11 +1,22 @@
 # 3.4 アプリの追加登録と、カスタム User モデル利用の宣言
 # 3.8.2 User モデル対応 app の作成
 import os
-from .settings_local import *
+# from .settings_local import *
+
+# Heroku
+try:
+    from .settings_local import *
+except ImportError:
+    pass
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = True
+DEBUG = False # Heroku - changed from True to False
+
+# Heroku
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
 
 ALLOWED_HOSTS = []
 
@@ -72,13 +83,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo' # 7.1 初期設定
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False # 7.2 初期設定
 
 STATIC_URL = '/static/'
 
